@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color:  #397097;
+  transition: .5s;
+}
+
 main {
   display: flex;
   height: 100vh;
@@ -15,17 +20,76 @@ main {
   align-items: center;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin: auto;
+  border-radius: 10px;
+  width: 200px;
+  transition: 0.3s;
+  color: white;
+}
+
+input {
+  width: 320px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+input:hover::placeholder {
+  color: rgba(255, 255, 255, 0.418);
+  transition: .3s;
+}
+
+input:focus{
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+} 
+input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.768);
+}
+
+
 #inputTimer {
-  /* padding: 10px ; */
   font-size: 5rem;
   font-weight: 700;
-  width: 200px;
-  text-align: center;
+}
+
+#inputBreakTimer {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+#btnStartTimer {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#btnStartTimer:hover {
+  background-color: #BA4949;
+  color: white;
+  transition: 0.3s;
+}
+
+#btnResetTimer{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#btnResetTimer:hover {
+  background-color: #326990;
+  color: white;
+  transition: 0.3s;
 }
 
 #container {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
 }
 
 #btnStartTimer, #btnResetTimer {
