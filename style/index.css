@@ -1,0 +1,33 @@
+:root {
+  font-family: sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#inputTimer {
+  /* padding: 10px ; */
+  font-size: 5rem;
+  font-weight: 700;
+  width: 200px;
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+}
+
+#btnStartTimer, #btnResetTimer {
+  padding: 10px;
+}

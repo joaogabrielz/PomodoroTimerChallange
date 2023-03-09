@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/imgs/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/imgs/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <title>Pomodoro Timer</title>
+
+  <link rel="stylesheet" href="style/index.css">
+
+</head>
+<body>
+  <main>
+    <section id="boxTimer">
+      <!-- <button id="btnTimer">
+        <span>25</span>min
+      </button> -->
+      <div id="container">
+        <input id="inputTimer" type="number" placeholder="30">
+        <button id="btnStartTimer">Start</button>
+        <button id="btnResetTimer">Reset</button>
+      </div>
+    </section>
+  </main>
+
+  <audio id="bellSound" src="assets/songs/sininho.mp3"></audio>
+  <script src="model/Timer.js"></script>
+  <script src="view/TimerView.js"></script>
+  <script src="controller/TimerController.js"></script>
+  <script src="utils/Notifyer.js"></script>
+  <script>
+    let controller = new TimerController();
+  </script>
+</body>
+</html>
