@@ -45,7 +45,9 @@ class TimerController {
 
   timeDecrementer() {
     this.pageBg.style.backgroundColor  = '#BA4949';
-    this.realTimer.setSeconds = 59;
+
+    this.realTimer.setSeconds = 60;
+    this.realTimer.setTime = this.realTimer.getTime - 1;
 
     let isBreakTime = false;
 
@@ -79,7 +81,7 @@ class TimerController {
             return;
           }
           
-          this.realTimer.setSeconds = 59;
+          this.realTimer.setSeconds = 60;
         }
 
     }, 1000);
@@ -88,7 +90,10 @@ class TimerController {
 
   breakTimeDecrementer() {
     this.pageBg.style.backgroundColor  = '#38858A';
-    this.realTimer.setSeconds = 59;
+
+    this.realTimer.setSeconds = 60;
+    this.realTimer.setBreakTime = this.realTimer.getBreakTime - 1;
+
     let isPomodoroTime = false;
 
     const temporizer = setInterval(() => {
@@ -117,7 +122,7 @@ class TimerController {
             }        
           }
         
-        this.realTimer.setSeconds = 59;
+        this.realTimer.setSeconds = 60;
         }
 
     }, 1000);

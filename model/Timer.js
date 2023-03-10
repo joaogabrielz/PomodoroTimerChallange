@@ -1,6 +1,6 @@
 class Timer {
 
-  constructor(time, breakTime, pomodoros = 0, seconds = 59) {
+  constructor(time, breakTime, pomodoros = 0, seconds = 0) {
     this.time = time;
     this.breakTime = breakTime;
     this.pomodoros = pomodoros;
