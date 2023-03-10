@@ -76,7 +76,6 @@ class TimerController {
             
             this.realTimer.incrementPomodoro();
 
-            console.log('stoped');
             isBreakTime = true;
             this.notify('Você finalizou o Pomodoro', 'Hora do descanço!');
             this.renderPomodoro(this.realTimer);
@@ -115,9 +114,8 @@ class TimerController {
 
           if(this.realTimer.getBreakTime == 0) {
             
-            console.log('stopedBreakTime');
             isPomodoroTime = true;
-            this.notify('Você finalizou o tempo de descanço', 'Hora do Pomodoro!');
+            this.notify('Você finalizou o tempo de descanço', 'Hora do Pomodoro!', true);
             this.renderBreakTime(this.realTimer);
             this.reset(); 
             if(this.realTimer.getPomodoros == 4){
@@ -187,12 +185,13 @@ class TimerController {
   }
   
 
-  async notify(title, body) {
+  async notify(title, body, doubleBell = false) {
+
     try {
-      await notifyer.init();
       notifyer.notify({
         title,
-        body
+        body,
+        doubleBell
       });
     } 
     catch (error) {

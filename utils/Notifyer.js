@@ -7,20 +7,23 @@ const notifyer = {
     }
   },
 
-  notify({ title, body }) {
+  notify({ title, body, doubleBell = false}) {
 
     const icon = './assets/imgs/favicon-32x32.png' 
 
-    document.querySelector('#bellSound').play();
+    let audio = null;
+
+    if(doubleBell) {
+      audio = document.querySelector('#doubleBellSound');
+    }
+    else{
+      audio = document.querySelector('#bellSound');
+    }
+    audio.play();
     
-    const notification = new Notification(title, {
+    new Notification(title, {
       body,
       icon
-    });
-
-    navigator.serviceWorker.register('sw.js');
-    navigator.serviceWorker.ready.then(function(registration) {
-      registration.showNotification(notification);
     });
 
   }
