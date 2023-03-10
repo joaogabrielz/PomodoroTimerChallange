@@ -12,10 +12,17 @@ const notifyer = {
     const icon = './assets/imgs/favicon-32x32.png' 
 
     document.querySelector('#bellSound').play();
-    new Notification(title, {
+    
+    const notification = new Notification(title, {
       body,
       icon
     });
+
+    navigator.serviceWorker.register('sw.js');
+    navigator.serviceWorker.ready.then(function(registration) {
+      registration.showNotification(notification);
+    });
+
   }
 
 }
