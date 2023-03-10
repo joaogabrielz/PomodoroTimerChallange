@@ -38,6 +38,13 @@ input {
   background-color: transparent;
   color: white;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+
+
 input:hover::placeholder {
   color: rgba(255, 255, 255, 0.418);
   transition: .3s;

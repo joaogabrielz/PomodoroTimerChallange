@@ -25,6 +25,9 @@ class TimerController {
   setupRender(timer) {
     if(this.realTimer.getPomodoros) timer.pomodoros = this.realTimer.getPomodoros;
 
+    this.inputTimer.type = 'text';
+    this.inputBreakTimer.type = 'text';
+
     this.inputTimer.value = new TimerView(timer).templateTimer();
     this.inputBreakTimer.value = new TimerView(timer).templateTimerBreak();
 
@@ -46,7 +49,7 @@ class TimerController {
   timeDecrementer() {
     this.pageBg.style.backgroundColor  = '#BA4949';
 
-    this.realTimer.setSeconds = 60;
+    this.realTimer.setSeconds = 5;
     this.realTimer.setTime = this.realTimer.getTime - 1;
 
     let isBreakTime = false;
@@ -81,7 +84,7 @@ class TimerController {
             return;
           }
           
-          this.realTimer.setSeconds = 60;
+          this.realTimer.setSeconds = 5;
         }
 
     }, 1000);
@@ -167,6 +170,7 @@ class TimerController {
 
   reset() {
     this.pageBg.style.backgroundColor = '#397097';
+
     if(this.realTimer.getPomodoros > 0) {
       this.realTimer = new Timer(0, 0, this.realTimer.getPomodoros, 0);
     }
@@ -175,6 +179,9 @@ class TimerController {
     }
     this.inputTimer.value = '';
     this.inputBreakTimer.value = '';
+    this.inputTimer.type = 'number';
+    this.inputBreakTimer.type = 'number';
+
     this.inputTimer.readOnly = false;
     this.inputBreakTimer.readOnly = false;
   }

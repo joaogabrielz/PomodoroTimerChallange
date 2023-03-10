@@ -9,10 +9,12 @@ const notifyer = {
 
   notify({ title, body }) {
 
+    const icon = './assets/imgs/favicon-32x32.png' 
+
     document.querySelector('#bellSound').play();
     new Notification(title, {
       body,
-      //icon  -- todo incluir icon
+      icon
     });
   }
 
