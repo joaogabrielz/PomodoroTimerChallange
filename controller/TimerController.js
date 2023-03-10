@@ -49,7 +49,7 @@ class TimerController {
   timeDecrementer() {
     this.pageBg.style.backgroundColor  = '#BA4949';
 
-    this.realTimer.setSeconds = 5;
+    this.realTimer.setSeconds = 60;
     this.realTimer.setTime = this.realTimer.getTime - 1;
 
     let isBreakTime = false;
@@ -84,7 +84,7 @@ class TimerController {
             return;
           }
           
-          this.realTimer.setSeconds = 5;
+          this.realTimer.setSeconds = 60;
         }
 
     }, 1000);
