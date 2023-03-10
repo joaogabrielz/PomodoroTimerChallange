@@ -76,8 +76,7 @@ input::-webkit-input-placeholder {
 }
 
 #btnStartTimer:hover {
-  background-color: #BA4949;
-  color: white;
+  color: #ab3232;
   transition: 0.3s;
 }
 
@@ -87,8 +86,7 @@ input::-webkit-input-placeholder {
 }
 
 #btnResetTimer:hover {
-  background-color: #397097;
-  color: white;
+  color: #154d76;
   transition: 0.3s;
 }
 
