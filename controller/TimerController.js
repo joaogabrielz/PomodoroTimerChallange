@@ -140,12 +140,12 @@ class TimerController {
     let timer = document.querySelector('#inputTimer').value;
     let timerBreak = document.querySelector('#inputBreakTimer').value;
  
-    if(!timer){
+    if(!timer || timer <= 0){
 
       const defaultTime = 25;
       let defaultBreak = 5;
 
-      if(timerBreak && timerBreak >= 0) {
+      if(timerBreak && timerBreak > 0) {
         defaultBreak = parseInt(timerBreak);
       }
 
@@ -156,7 +156,7 @@ class TimerController {
       timer = parseInt(timer);
       let defaultBreak = 5;
 
-      if(timerBreak && timerBreak >= 0) {
+      if(timerBreak && timerBreak > 0) {
         defaultBreak = parseInt(timerBreak);
       }
       const typedTime = new Timer(timer, defaultBreak);
