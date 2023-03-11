@@ -7,7 +7,7 @@ const notifyer = {
     }
   },
 
-  notify({ title, body, doubleBell = false}) {
+  notify({ title, body, doubleBell = false, playSong = true}) {
 
     const icon = './assets/imgs/favicon-32x32.png' 
 
@@ -19,7 +19,9 @@ const notifyer = {
     else{
       audio = document.querySelector('#bellSound');
     }
-    audio.play();
+    if(playSong) {
+      audio.play();
+    }
     
     new Notification(title, {
       body,

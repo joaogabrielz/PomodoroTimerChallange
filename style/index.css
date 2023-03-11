@@ -24,6 +24,13 @@ button {
   cursor: pointer;
   border: none;
   background-color: transparent;
+}
+
+button#btnStartTimer,
+button#btnResetTimer{
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
   margin: auto;
   border-radius: 10px;
   width: 200px;
@@ -42,6 +49,36 @@ input {
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none;
+}
+
+
+.blink {
+  animation: blink 0.5s ease-in-out 0.5s forwards;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.display-inlineBlock {
+  display: inline-block;
+}
+
+.expandText {
+  font-size: 5rem !important;
+}
+
+.shortenText {
+  font-size: 3rem !important;
+}
+
+@keyframes blink{
+  from {
+    display: inline-block;
+  }
+  to {
+    transform: translateY(40px); opacity: 0; 
+  }
 }
 
 
@@ -95,6 +132,32 @@ input::-webkit-input-placeholder {
   flex-direction: column;
   justify-content: space-around;
   gap: 10px;
+  position: relative;
+}
+
+.boxinputButton {
+  display: flex;
+  align-items: center;
+}
+.floatBtn {
+  position: absolute;
+  left: 0;
+}
+
+#pomodoroCounter {
+  width: 30px;
+  height: 30px;
+  font-size: 1.3rem;
+  color: #113d5c;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: -30;
+  right: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #btnStartTimer, #btnResetTimer {

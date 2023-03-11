@@ -10,6 +10,10 @@ class TimerView {
   }
   templateTimerBreak() {
     return `${parseInt(this.timer.getBreakTime)}:${this.timer.getSeconds > 9 ? 
-      this.timer.getSeconds : '0' + this.timer.getSeconds}`
+      this.timer.getSeconds : '0' + this.timer.getSeconds}`;
+  }
+
+  templatePomodoroNotify() {
+    return `${this.timer.getPomodoros}`;
   }
 }
