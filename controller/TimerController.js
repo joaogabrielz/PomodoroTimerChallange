@@ -90,10 +90,16 @@ class TimerController {
 
     this.realTimer = timer;
 
+    if (document.querySelector("#inputBreakTimer").placeholder == 10){
+      console.log('changed')
+      document.querySelector("#inputBreakTimer").placeholder = 5;
+    }
+
     if(this.startWithBreakTimer){
       this.notify("Você Começou pelo descanço", "", false, false);
       return this.breakTimeDecrementer();
     }
+
     this.timeDecrementer();
   }
 
