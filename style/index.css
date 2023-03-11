@@ -135,15 +135,6 @@ input::-webkit-input-placeholder {
   position: relative;
 }
 
-.boxinputButton {
-  display: flex;
-  align-items: center;
-}
-.floatBtn {
-  position: absolute;
-  left: 0;
-}
-
 #pomodoroCounter {
   width: 30px;
   height: 30px;
@@ -153,11 +144,11 @@ input::-webkit-input-placeholder {
   border-radius: 50%;
   background-color: white;
   position: absolute;
-  top: -30;
-  right: 30;
+  top: -30px;
+  right: 30px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 #btnStartTimer, #btnResetTimer {
