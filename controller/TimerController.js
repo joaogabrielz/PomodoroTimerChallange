@@ -13,6 +13,8 @@ class TimerController {
   }
 
   bind() {
+    this.permissionNotify = this.tryPermissionNotify();
+
     document.querySelectorAll("button").forEach((btn) => {
       btn.addEventListener("click", (event) => {
         if (event.target.id === "btnStartTimer") {
@@ -45,7 +47,6 @@ class TimerController {
   }
 
   startTimer() {
-    this.permissionNotify = this.tryPermissionNotify();
     let timer = this.inputTimer.value;
     let timerBreak = this.inputBreakTimer.value;
 
