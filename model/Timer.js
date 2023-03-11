@@ -49,7 +49,7 @@ class Timer {
     this.seconds--;
   }
 
-  incrementPomodoro() {
+  incrementPomodoroCounter() {
     this.pomodoros++;
   }
 

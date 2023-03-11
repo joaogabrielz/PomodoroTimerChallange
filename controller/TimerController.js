@@ -6,10 +6,10 @@ class TimerController {
     this.pomodoroCounter = document.querySelector("#pomodoroCounter");
     this.realTimer = new Timer(0, 0, 0, 0);
 
-    this.bind();
     this.secondsDefault = 60;
-    this.animationRunning = null;
+    this.animationRunning = false;
     this.startWithBreakTimer = false;
+    this.bind();
   }
 
   bind() {
@@ -45,8 +45,9 @@ class TimerController {
   }
 
   startTimer() {
-    let timer = document.querySelector("#inputTimer").value;
-    let timerBreak = document.querySelector("#inputBreakTimer").value;
+    this.permissionNotify = this.tryPermissionNotify();
+    let timer = this.inputTimer.value;
+    let timerBreak = this.inputBreakTimer.value;
 
     if (!timer || timer <= 0) {
       const defaultTime = 25;
@@ -58,7 +59,9 @@ class TimerController {
 
       const timerDefault = new Timer(defaultTime, defaultBreak);
       this.setupRender(timerDefault);
+
     } else if (timer && timer > 0) {
+      
       timer = parseInt(timer);
       let defaultBreak = 5;
 
@@ -101,6 +104,7 @@ class TimerController {
     let isBreakTime = false;
 
     const temporizer = setInterval(() => {
+
       if (isBreakTime) {
         clearInterval(temporizer);
         return;
@@ -111,17 +115,17 @@ class TimerController {
       }
 
       this.realTimer.decrementSeconds();
-      this.renderPomodoro(this.realTimer);
+      this.renderTimer(this.realTimer);
+
 
       if (this.realTimer.getSeconds == 0) {
         this.realTimer.decrementTime();
 
         if (this.realTimer.getTime == 0) {
-          this.realTimer.incrementPomodoro();
-
           isBreakTime = true;
+
           this.notify("Você finalizou o Pomodoro", "Hora do descanço!");
-          this.renderPomodoro(this.realTimer);
+          this.renderTimer(this.realTimer);
           this.breakTimeDecrementer();
           return;
         }
@@ -140,7 +144,7 @@ class TimerController {
     this.pageBg.style.backgroundColor = "#BA4949";
   }
 
-  renderPomodoro(timerUpdated) {
+  renderTimer(timerUpdated) {
     this.inputTimer.value = new TimerView(timerUpdated).templateTimer();
   }
 
@@ -152,6 +156,7 @@ class TimerController {
     let isPomodoroTime = false;
 
     const temporizer = setInterval(() => {
+
       if (isPomodoroTime) {
         clearInterval(temporizer);
         return;
@@ -168,16 +173,24 @@ class TimerController {
         this.realTimer.decrementBreakTime();
 
         if (this.realTimer.getBreakTime == 0) {
+
           isPomodoroTime = true;
-        
           this.renderBreakTime(this.realTimer);
+          
           if(!this.startWithBreakTimer) {
+            this.realTimer.incrementPomodoroCounter();
             this.renderPomodoroCounter();
-            this.notify(
-              "Você finalizou o tempo de descanço",
-              "Hora do Pomodoro!",
-              true
-            );
+
+            if (this.realTimer.getPomodoros == 4) {
+              this.sendPomodoroSuggestion();
+            } else{
+              this.notify(
+                "Você finalizou o tempo de descanço",
+                "Hora do Pomodoro!",
+                true
+              );
+            }
+
           }
           else{
             this.notify(
@@ -186,11 +199,8 @@ class TimerController {
               false,
             );
           }
-          
-          this.reset();
-          if (this.realTimer.getPomodoros == 4) {
-            this.sendPomodoroSuggestion();
-          }
+                 
+          this.reset();       
         }
 
         this.realTimer.setSeconds = this.secondsDefault;
@@ -231,22 +241,32 @@ class TimerController {
   sendPomodoroSuggestion() {
     this.notify(
       "Parabéns você completou 4 pomodoros",
-      "Tente descançar 10 minutos"
+      "Tente descançar 10 minutos",
+      true
     );
     document.querySelector("#inputBreakTimer").placeholder = 10;
   }
 
-  async notify(title, body, doubleBell = false, playSong = true) {
-    try {
+  notify(title, body, doubleBell = false, playSong = true) {
+    
+    if(this.permissionNotify){
       notifyer.notify({
         title,
         body,
         doubleBell,
         playSong,
       });
-    } catch (error) {
-      console.error(error.message);
     }
+    
+  }
+
+  async tryPermissionNotify(){
+    try {
+      this.permissionNotify = await notifyer.init();
+    } 
+    catch (error) {
+      console.error(error.message);
+    } 
   }
 
   reset() {

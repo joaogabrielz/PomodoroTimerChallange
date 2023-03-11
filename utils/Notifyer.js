@@ -5,12 +5,14 @@ const notifyer = {
     if(permission !== 'granted'){
       throw new Error('Permissão Negada');
     }
+    else if(permission == 'granted'){
+      return true;
+    }
   },
 
   notify({ title, body, doubleBell = false, playSong = true}) {
 
-    const icon = './assets/imgs/favicon-32x32.png' 
-
+    const icon = './assets/imgs/favicon-32x32.png';
     let audio = null;
 
     if(doubleBell) {
