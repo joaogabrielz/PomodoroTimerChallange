@@ -26,17 +26,15 @@ const notifyer = {
     }
     
     try {
-      ServiceWorkerRegistration.showNotification(
-        new Notification(title, {
-          body,
-          icon
-        })
-      );
+      new Notification(title, {
+        body,
+        icon
+      });
     } 
     catch (error) {
-      console.log(error);
+      console.error(error);
     }
-    
+   
 
   }
 
