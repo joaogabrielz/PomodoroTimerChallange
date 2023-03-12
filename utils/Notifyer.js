@@ -25,10 +25,18 @@ const notifyer = {
       audio.play();
     }
     
-    new Notification(title, {
-      body,
-      icon
-    });
+    try {
+      ServiceWorkerRegistration.showNotification(
+        new Notification(title, {
+          body,
+          icon
+        })
+      );
+    } 
+    catch (error) {
+      console.log(error);
+    }
+    
 
   }
 
