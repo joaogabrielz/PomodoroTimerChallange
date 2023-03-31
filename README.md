@@ -1,1 +1,6 @@
-# pomodoro-jera-academy
+# PomodoroTimerChallange
+
+
+### How it works?
+  
+
